@@ -1,10 +1,14 @@
-import { defineNuxtModule, addPlugin, createResolver } from '@nuxt/kit'
+import { defineNuxtModule, addImports } from '@nuxt/kit'
 
 import { resolveComponents } from './runtime/components'
+import { resolveHelpers } from './runtime/helpers'
 import { getStyles } from './runtime/styles'
 
 // Module options TypeScript interface definition
-export interface ModuleOptions {}
+export interface ModuleOptions {
+  prefix?: string
+  helpers?: boolean
+}
 
 export default defineNuxtModule<ModuleOptions>({
   meta: {
@@ -12,10 +16,18 @@ export default defineNuxtModule<ModuleOptions>({
     configKey: 'nube',
   },
   // Default configuration options of the Nuxt module
-  defaults: {},
+  defaults: {
+    prefix: '',
+    helpers: true,
+  },
   setup(options, nuxt) {
+    const { prefix, helpers } = options
 
-    resolveComponents()
+    resolveComponents({ prefix })
+
+    if (helpers) {
+      resolveHelpers()
+    }
 
     const styles = getStyles()
 
