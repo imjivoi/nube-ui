@@ -109,6 +109,7 @@ export const main = recipe({
       true: {
         borderColor: toRgba(buttonBackgroundColorVar),
         borderStyle: 'solid',
+        borderWidth: 2,
         color: toRgba(buttonBackgroundColorVar),
         background: 'transparent',
       },
