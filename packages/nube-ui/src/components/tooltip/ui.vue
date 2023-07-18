@@ -1,5 +1,5 @@
 <template>
-  <div ref="tooltipRef">
+  <div ref="tooltipRef" :class="styles.main">
     <Teleport to="body">
       <transition :name="styles.tooltipTransitionClass">
         <div
