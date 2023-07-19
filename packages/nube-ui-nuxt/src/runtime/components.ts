@@ -1,4 +1,4 @@
-import { addComponent, addComponentsDir, createResolver } from '@nuxt/kit'
+import { addComponent } from '@nuxt/kit'
 import * as components from 'nube-ui/dist/components'
 import config from './config'
 
