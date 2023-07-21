@@ -7,7 +7,6 @@
   "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build:files": "node scripts/build.mjs",
     "build:types": "vue-tsc --emitDeclarationOnly",
     "build": "rollup -c && pnpm build:types",
     "preview": "vite preview",
