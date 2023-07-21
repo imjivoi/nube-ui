@@ -1,5 +1,6 @@
 import { vanillaExtractPlugin } from '@vanilla-extract/rollup-plugin'
 import path from 'path'
+import fs from 'fs'
 import vuePlugin from 'rollup-plugin-vue'
 import alias from '@rollup/plugin-alias'
 import esbuild from 'rollup-plugin-esbuild'
@@ -9,7 +10,7 @@ import postcss from 'postcss'
 import css from 'rollup-plugin-import-css'
 import { emptyDir as fsExtraEmptyDir } from 'fs-extra'
 
-const excludedFiles = ['css/theme/default.css', 'css/theme/example.css']
+const excludedFiles = ['theme/default.css', 'theme/example.css', 'utilities/sprinkles.css']
 
 /** @type {Set<string>} */
 const emittedCSSFiles = new Set()
@@ -69,19 +70,34 @@ const emptyDir = () => ({
   },
 })
 
+ 
+/** Rewrite css files with postcss processed css */
+const customPostCss = () => ({
+  name: 'postcss',
+
+  async writeBundle(options, bundle) {
+    for await (const filePath of Array.from(emittedCSSFiles.values())) {
+      const file = bundle[filePath]
+      const code = postcss([autoprefixer]).process(file.source).css
+      const fullPath = path.resolve('dist', filePath)
+
+      fs.writeFileSync(fullPath, code)
+    }
+  },
+})
+
 const plugins = [
   vanillaExtractPlugin({
     identifiers: 'debug',
   }),
+  customPostCss(),
   vuePlugin(),
   alias({
     entries: [{ find: '@', replacement: path.resolve('./src') }],
   }),
   esbuild(),
   depsExternal(),
-
   bundleCssEmits(),
-  // css(),
   emptyDir(),
 ]
 
@@ -101,7 +117,7 @@ export default {
         return `${name.replace(/\.css$/, '.css.vanilla')}.js`
       },
       assetFileNames(assetInfo) {
-        const assetPath = assetInfo.name.replace(/^src\//, 'css/').replace('.css.ts.vanilla', '')
+        const assetPath = assetInfo.name.replace(/^src\//, '').replace('.css.ts.vanilla', '')
         if (assetPath.match(/\.css$/)) {
           emittedCSSFiles.add(assetPath)
         }
