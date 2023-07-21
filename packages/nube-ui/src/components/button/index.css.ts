@@ -28,7 +28,7 @@ export const content = recipe({
   },
 })
 
-export const main = recipe({
+export const base = recipe({
   base: {
     border: 'none',
     margin: '5px',

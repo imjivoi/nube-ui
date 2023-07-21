@@ -1,7 +1,7 @@
 import { createVar, style } from '@vanilla-extract/css'
+import { recipe } from '@vanilla-extract/recipes'
 
 import { fontSizes, vars } from '@/styles'
-import { recipe } from '@vanilla-extract/recipes'
 import { createColorVariantVars } from '../../styles/colors'
 import { toRgba } from '../../utils'
 
@@ -9,7 +9,7 @@ const textareaLabelSizeVar = createVar()
 const textareaBorderColorVar = createVar()
 const textareaBorderRadiusVar = createVar()
 
-export const main = style({
+export const base = style({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',

@@ -1,5 +1,5 @@
 <template>
-  <div ref="tooltipRef" :class="styles.main">
+  <div ref="tooltipRef" :class="styles.base">
     <Teleport to="body">
       <transition :name="styles.tooltipTransitionClass">
         <div
@@ -16,19 +16,19 @@
     <slot name="trigger"></slot>
   </div>
 </template>
-
+<script lang="ts">
+export default {
+  name: 'Ntooltip',
+}
+</script>
 <script setup lang="ts">
 import { useElementBounding, useElementHover } from '@vueuse/core'
-import { computed, ref, toRefs } from 'vue'
+import { computed, ref } from 'vue'
 import { ColorType } from '../../styles'
 
 import * as styles from './index.css'
 
-defineOptions({
-  name: 'Ntooltip',
-})
-
-interface TooltipProps {
+export interface TooltipProps {
   position?: 'top' | 'bottom' | 'left' | 'right'
   variant?: ColorType | 'default'
 }

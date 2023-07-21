@@ -5,7 +5,7 @@ import { toRgba } from '../../utils'
 
 const alertColorVar = createVar()
 
-export const main = recipe({
+export const base = recipe({
   base: {
     background: toRgba(alertColorVar),
     color: '#fff',
@@ -35,6 +35,6 @@ export const main = recipe({
   },
 })
 
-globalStyle(`${main} h3`, {
+globalStyle(`${base()} h3`, {
   margin: `0 0 ${vars.spaces[5]}`,
 })

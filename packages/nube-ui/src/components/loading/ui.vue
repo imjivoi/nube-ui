@@ -1,5 +1,5 @@
 <template>
-  <div :class="styles.main({ color: variant, size })" :style="assignInlineVars(vars)"></div>
+  <div :class="styles.base({ color: variant, size })" :style="assignInlineVars(vars)"></div>
 </template>
 <script lang="ts">
 export default {

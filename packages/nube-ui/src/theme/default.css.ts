@@ -1,12 +1,12 @@
 import { createGlobalTheme, globalStyle, assignVars } from '@vanilla-extract/css'
 
-import { colorVarsLightDefault, vars, colorVarsDarkDefault, twShadows, fontSizes } from '@/styles'
-import { spaces } from '../styles/default-vars'
+import { vars } from '../styles/vars.css'
+import { spaces, colorVarsLightDefault, colorVarsDarkDefault, twShadows } from '../styles/default-vars'
 
 createGlobalTheme(':root', vars, {
   colors: colorVarsDarkDefault,
   shadows: twShadows,
-  spaces: spaces
+  spaces: spaces,
   // fontSize: fontSizes
 })
 

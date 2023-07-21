@@ -1,11 +1,15 @@
 {
   "name": "nube-ui",
+  "description": "Nube UI - Vue component library",
   "private": false,
   "version": "0.0.1-alpha.5",
   "type": "module",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "rollup -c && vue-tsc --emitDeclarationOnly",
+    "build:files": "node scripts/build.mjs",
+    "build:types": "vue-tsc --emitDeclarationOnly",
+    "build": "rollup -c && pnpm build:types",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",

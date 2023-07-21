@@ -1,13 +1,13 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
-import { createColorVariantVars, fontSizes, vars } from '../../styles'
+import { createColorVariantVars, vars } from '../../styles'
 import { toRgba } from '../../utils'
 
 export const selectItemColorVar = createVar()
 export const selectItemColorLightVar = createVar()
 const selectLabelSizeVar = createVar()
 
-export const main = style({
+export const base = style({
   maxWidth: '200px',
   width: '100%',
   position: 'relative',
@@ -108,6 +108,10 @@ export const label = style([
     transform: 'translateY(-28px) translateX(-10px)',
   },
 ])
+
+export const chevron = style({
+  marginLeft: 'auto'
+})
 
 export const items = style({
   position: 'absolute',

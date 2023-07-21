@@ -65,7 +65,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
 const buttonAttrs = computed(() => ({
   disabled: props.disabled || props.loading,
 
-  class: styles.main({
+  class: styles.base({
     variant: props.variant,
     flat: props.flat,
     shadow: props.shadow,

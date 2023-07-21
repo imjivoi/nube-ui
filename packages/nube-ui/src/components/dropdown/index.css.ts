@@ -5,11 +5,8 @@ import { createColorVariantVars, vars } from '../../styles'
 import { toRgba } from '../../utils'
 
 const dropdownItemColorVar = createVar()
-const dropdownItemHoverColorVar = createVar()
-const dropdownItemLightColorVar = createVar()
-const dropdownItemShadowColorVar = createVar()
 
-export const main = style({
+export const base = style({
   position: 'relative',
   display: 'inline-block',
 })
@@ -25,6 +22,7 @@ export const menu = recipe({
     zIndex: 1,
     listStyle: 'none',
     margin: 0,
+    padding: vars.spaces[4]
   },
 })
 
@@ -83,6 +81,10 @@ export const item = recipe({
   defaultVariants: {
     variant: 'primary',
   },
+})
+
+export const chevron = style({
+  marginLeft: vars.spaces[2]
 })
 
 export const animationClass = 'p-dropdown-animation'

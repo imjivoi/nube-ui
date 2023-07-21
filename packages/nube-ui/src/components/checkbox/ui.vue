@@ -1,5 +1,5 @@
 <template>
-  <label :class="styles.main">
+  <label :class="styles.base">
     <div :class="styles.container({ color: variant, checked: isChecked })">
       <div :class="styles.checkmark">
         <i :class="styles.checkmarkIcon">

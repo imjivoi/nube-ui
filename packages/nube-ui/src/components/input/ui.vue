@@ -1,5 +1,5 @@
 <template>
-  <div :class="styles.main">
+  <div :class="styles.base">
     <div :class="styles.wrapper({ shadow })">
       <div :class="styles.container({ border, variant })">
         <span v-if="prefix || $slots.prefix" :class="styles.prefix">

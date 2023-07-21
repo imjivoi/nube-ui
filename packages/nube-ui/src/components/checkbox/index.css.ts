@@ -8,7 +8,7 @@ const checkboxSizeVar = createVar()
 const checkboxBackgroundVar = createVar()
 const checkboxCheckedBackgroundVar = createVar()
 
-export const main = style({
+export const base = style({
   display: 'flex',
   alignItems: 'center',
   gap: pxToRem(10),
@@ -33,7 +33,7 @@ export const container = recipe({
       [checkboxSizeVar]: '23px',
     },
     selectors: {
-      [`${main}:hover &`]: {
+      [`${base}:hover &`]: {
         boxShadow: vars.shadows.sm,
       },
     },
@@ -44,7 +44,7 @@ export const container = recipe({
       true: {
         background: toRgba(checkboxCheckedBackgroundVar),
         selectors: {
-          [`${main}:hover &`]: {
+          [`${base}:hover &`]: {
             boxShadow: `0 0 0 2px ${toRgba(checkboxCheckedBackgroundVar, 0.5)}`,
           },
         },

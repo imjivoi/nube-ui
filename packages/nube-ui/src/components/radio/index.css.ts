@@ -1,7 +1,7 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
 import { createColorVariantVars } from '../../styles/colors'
-import { spaces, vars } from '../../styles'
+import { vars } from '../../styles'
 import { toRgba } from '../../utils'
 
 const radioSizeVar = createVar()
@@ -22,12 +22,12 @@ export const input = style({
   },
 })
 
-export const main = style({
+export const base = style({
   position: 'relative',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  gap: spaces[4],
+  gap: vars.spaces[4],
   cursor: 'pointer',
 })
 

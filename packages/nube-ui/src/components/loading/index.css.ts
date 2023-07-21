@@ -16,7 +16,7 @@ const rotation = keyframes({
 export const loaderSizeVar = createVar()
 export const loaderColorVar = createVar()
 export const loaderBorderVar = createVar()
-export const main = recipe({
+export const base = recipe({
   base: {
     width: loaderSizeVar,
     height: loaderSizeVar,

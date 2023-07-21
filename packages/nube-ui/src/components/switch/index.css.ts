@@ -26,7 +26,7 @@ const switchHoverColorVar = createVar()
 const switchSliderBackgroundVar = createVar()
 const switchSliderSizeVar = createVar()
 
-export const main = style({
+export const base = style({
   boxSizing: 'border-box',
   width: '48px',
   height: '28px',

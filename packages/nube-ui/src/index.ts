@@ -1,17 +1,16 @@
 import { type App } from 'vue'
 import * as components from './components'
 import './styles/global.css'
+import './theme/default.css'
 
 export * from './components'
 
-export { vars, colorVarsLightDefault, colorVarsDarkDefault, css, twShadows } from './styles'
+export { vars, colorVarsLightDefault, colorVarsDarkDefault, twShadows } from './styles'
 export { lightTheme, darkTheme } from './theme/example.css'
-import './theme/default.css'
+export * from './utilities'
 
 function install(app: App) {
-  if(window) {
 
-  }
   Object.values(components).forEach((component) => {
     //@ts-ignore
     app.use(component)

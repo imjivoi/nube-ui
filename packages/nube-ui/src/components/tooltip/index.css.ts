@@ -1,11 +1,12 @@
 import { createVar, globalStyle, style } from '@vanilla-extract/css'
 import { recipe } from '@vanilla-extract/recipes'
+
 import { createColorVariantVars, vars } from '../../styles'
 import { toRgba } from '../../utils'
 
 const tooltipColorVar = createVar()
 
-export const main = style({
+export const base = style({
   width: 'fit-content',
 })
 

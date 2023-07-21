@@ -1,17 +1,17 @@
 <template>
-  <Menu as="div" :class="styles.main">
+  <Menu as="div" :class="styles.base">
     <div>
       <MenuButton as="template" :disabled="disabled">
         <slot name="trigger">
           <NButton :variant="variant" :flat="flat" :plain="plain" :shadow="shadow">
             {{ label }}
-            <Icon :class="css({ ml: 2 })" icon="vaadin:chevron-down-small" />
+            <Icon :class="styles.chevron" icon="vaadin:chevron-down-small" />
           </NButton>
         </slot>
       </MenuButton>
     </div>
     <transition :name="styles.animationClass">
-      <MenuItems :class="[styles.menu(), css({ p: 4 })]">
+      <MenuItems :class="[styles.menu()]">
         <slot>
           <NDropdownItem
             :variant="variant"
@@ -40,7 +40,7 @@ import { Icon } from '@iconify/vue'
 import { NButton } from '../button'
 import { NDropdownItem } from './'
 
-import { ColorType, css } from '../../styles'
+import { ColorType } from '../../styles'
 import * as styles from './index.css'
 
 export interface DropdownProps {

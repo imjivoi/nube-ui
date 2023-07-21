@@ -1,8 +1,8 @@
 import { createSprinkles, defineProperties } from '@vanilla-extract/sprinkles'
 
-import { vars } from './vars.css'
+import { vars } from '../styles/vars.css'
 
-import { toRgba } from '@/utils'
+import { toRgba } from '../utils'
 
 const fontSizes = {
 	xs: 12,

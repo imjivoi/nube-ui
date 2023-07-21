@@ -9,7 +9,7 @@ const inputLabelSizeVar = createVar()
 const inputBorderColorVar = createVar()
 const inputBorderRadiusVar = createVar()
 
-export const main = style({
+export const base = style({
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',

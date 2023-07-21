@@ -1,5 +1,5 @@
 <template>
-  <label :class="styles.main">
+  <label :class="styles.base">
     <input type="checkbox" :class="styles.input" :value="modelValue" v-model="model" />
     <div :class="styles.background({ color: variant })"></div>
     <div :class="styles.slider">

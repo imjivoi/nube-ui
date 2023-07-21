@@ -1,5 +1,5 @@
 <template>
-  <div :class="styles.main({ variant, flat, shadow, rounded })">
+  <div :class="styles.base({ variant, flat, shadow, rounded })">
     <div>
       <h3>
         <slot name="title" />
@@ -11,11 +11,16 @@
     </div>
   </div>
 </template>
+<script lang="ts">
+export default {
+  name: 'NAlert',
+}
+</script>
 <script setup lang="ts">
 import { ColorType } from '../../styles'
 import * as styles from './index.css'
 
-interface AlertProps {
+export interface AlertProps {
   variant?: ColorType
   flat?: boolean
   shadow?: boolean

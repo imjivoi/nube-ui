@@ -1,5 +1,5 @@
 <template>
-  <Listbox v-model="model" as="div" :class="styles.main" v-slot="{ open }" :multiple="multiple">
+  <Listbox v-model="model" as="div" :class="styles.base" v-slot="{ open }" :multiple="multiple">
     <ListboxButton :class="styles.button">
       <template v-if="selectedLabel">
         {{ selectedLabel }}
@@ -15,7 +15,7 @@
         {{ labelPlaceholder || placeholder }}
       </label>
       <label :class="styles.label" v-if="!!label && !labelPlaceholder">{{ label }}</label>
-      <Icon :class="css({ ml: 'auto' })" width="20px" icon="ic:baseline-keyboard-arrow-down" :v-flip="open" />
+      <Icon :class="styles.chevron" width="20px" icon="ic:baseline-keyboard-arrow-down" :v-flip="open" />
     </ListboxButton>
     <Transition :name="styles.animationClass">
       <div :class="styles.items" v-if="open">
@@ -43,7 +43,7 @@ import { Listbox, ListboxButton, ListboxOptions, ListboxLabel } from '@headlessu
 import SelectItem from './select-item.vue'
 
 import * as styles from './index.css'
-import { ColorType, css } from '../../styles'
+import { ColorType } from '../../styles'
 
 export interface SelectProps {
   modelValue: any
