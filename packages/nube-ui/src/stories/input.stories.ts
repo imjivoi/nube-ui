@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { NInput } from '@/components'
+import { NInput } from '../components'
 import { ref } from 'vue'
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
@@ -19,6 +19,7 @@ const meta = {
     prefix: { type: 'string', control: 'text' },
     suffix: { type: 'string', control: 'text' },
     type: { control: 'select', options: ['text', 'password', 'number', 'email', 'tel', 'date', 'url'] },
+    disabled: { type: 'boolean', control: 'boolean' },
   },
   args: {
     modelValue: '',
@@ -118,3 +119,9 @@ Types.decorators = [
     }
   },
 ]
+
+export const Disabled: Story = {
+  args: {
+    disabled: true,
+  },
+}
