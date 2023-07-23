@@ -1,7 +1,7 @@
 <template>
   <div :class="styles.base({ variant, flat, shadow, rounded })">
     <div>
-      <h3>
+      <h3 :class="styles.title">
         <slot name="title" />
       </h3>
 

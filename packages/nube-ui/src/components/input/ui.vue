@@ -13,6 +13,7 @@
           :value="modelValue"
           @input="$emit('update:model-value', ($event.target as HTMLInputElement).value)"
           :type="currentType"
+          :disabled="disabled"
         />
         <label :class="styles.placeholder({ label: !!labelPlaceholder, hidden: !!modelValue })">
           {{ labelPlaceholder || placeholder }}

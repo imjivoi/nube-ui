@@ -1,8 +1,9 @@
 import { createVar, style } from '@vanilla-extract/css'
-
-import { fontSizes, vars } from '@/styles'
 import { recipe } from '@vanilla-extract/recipes'
-import { createColorVariantVars } from '../../styles/colors'
+
+import { createColorVariantVars } from '@/styles/colors'
+import { fontSizes, vars } from '@/styles'
+
 import { toRgba } from '../../utils'
 
 const inputLabelSizeVar = createVar()
@@ -90,6 +91,11 @@ export const content = style({
   fontSize: fontSizes.sm,
   width: '100%',
   color: toRgba(vars.colors.text),
+  selectors: {
+    '&:disabled': {
+      color: toRgba(vars.colors.text, 0.5),
+    },
+  },
 })
 
 const labelBase = style({
@@ -106,9 +112,7 @@ const labelBase = style({
 })
 
 export const placeholder = recipe({
-  base: [
-    labelBase,
-  ],
+  base: [labelBase],
   variants: {
     label: {
       true: {
