@@ -18,11 +18,11 @@ export function capitalize(str: string) {
   return str.charAt(0).toUpperCase() + str.slice(1)
 }
 
-export function toRgba(color: string, alpha = 1) {
+export function toRgba(color: string, alpha: string | number = 1) {
   const rgb = isHexColor(color) ? hexToRgb(color) : color
   return `rgba(${rgb},${alpha})`
 }
 
 export function generateRandomId() {
   return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
-} 
+}

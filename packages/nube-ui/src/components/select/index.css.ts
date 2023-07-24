@@ -53,7 +53,7 @@ const labelBase = style({
   // opacity: 0.6,
 
   vars: {
-    [selectLabelSizeVar]: '12px',
+    [selectLabelSizeVar]: vars.fontSizes.xs,
   },
 })
 

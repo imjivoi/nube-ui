@@ -73,7 +73,7 @@ export const content = style({
   background: 'none',
   padding: '10px',
   borderRadius: textareaBorderRadiusVar,
-  fontSize: fontSizes.sm,
+  fontSize: vars.fontSizes.sm,
   width: '100%',
   color: toRgba(vars.colors.text),
   resize: 'none',
@@ -89,7 +89,7 @@ const labelBase = style({
   transition: 'all .35s',
 
   vars: {
-    [textareaLabelSizeVar]: fontSizes.xs,
+    [textareaLabelSizeVar]: vars.fontSizes.xs,
   },
 })
 
@@ -151,7 +151,7 @@ export const label = style([
 const textareaMessageColorVar = createVar()
 export const message = recipe({
   base: {
-    fontSize: fontSizes.xs,
+    fontSize: vars.fontSizes.xs,
     color: toRgba(textareaMessageColorVar),
     textAlign: 'left',
     position: 'absolute',

@@ -174,17 +174,6 @@ const tailwindGapProperties = {
 	72: '18rem',
 }
 
-export const tailwindFontSizes = {
-	xs: '0.75rem',
-  sm: '0.875rem',
-  md: '1rem',
-  lg: '1.125rem',
-  xl: '1.25rem',
-	'2xl': '1.5rem',
-  '3xl': '1.875rem',
-  '4xl': '2.25rem',
-}
-
 const spaceProperties = defineProperties({
 	conditions: breakpoints,
 	defaultCondition: 'default',
@@ -269,7 +258,7 @@ const textProperties = defineProperties({
 	properties: {
 		color: defaultColors,
 		fontFamily: ['inherit', 'sans-serif', 'serif'],
-		fontSize: tailwindFontSizes,
+		fontSize: vars.fontSizes,
 		fontWeight: ['normal', 'bold', 'bolder', 'lighter', '100', '200', '300', '400', '500', '600', '700', '800', '900'],
 		lineHeight: ['normal', 'none', 'tight', 'snug', 'normal', 'relaxed', 'loose'],
 		textAlign: ['left', 'center', 'right', 'justify'],

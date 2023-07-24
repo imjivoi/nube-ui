@@ -30,15 +30,17 @@ const shadows = {
   none: 'shadow-none',
 }
 
-const fontSize = {
-  xs: '',
-  sm: '',
-  md: '',
-  lg: '',
-  xl: '',
-  '2xl': '',
-  '3xl': '',
-  '4xl': '',
+const fontSizes = {
+  '3xs': 'font-size-3xs',
+  '2xs': 'font-size-2xs',
+  xs: 'font-size-xs',
+  sm: 'font-size-sm',
+  md: 'font-size-md',
+  lg: 'font-size-lg',
+  xl: 'font-size-xl',
+  '2xl': 'font-size-2xl',
+  '3xl': 'font-size-3xl',
+  '4xl': 'font-size-4xl',
 }
 const spaces = {
   auto: 'space-auto',
@@ -86,7 +88,7 @@ export const themeVars = {
   colors,
   shadows,
   spaces,
-  // fontSize
+  fontSizes
 } as const
 
 export const vars = createGlobalThemeContract(themeVars)

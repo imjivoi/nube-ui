@@ -69,7 +69,7 @@ export const container = recipe({
 
 export const prefix = style({
   color: toRgba(vars.colors.textLight),
-  fontSize: fontSizes.sm,
+  fontSize: vars.fontSizes.sm,
   // padding: '0 13px',
   selectors: {
     [`&:first-child`]: {
@@ -88,7 +88,7 @@ export const content = style({
   background: 'none',
   padding: '10px',
   borderRadius: inputBorderRadiusVar,
-  fontSize: fontSizes.sm,
+  fontSize: vars.fontSizes.sm,
   width: '100%',
   color: toRgba(vars.colors.text),
   selectors: {
@@ -107,7 +107,7 @@ const labelBase = style({
   transition: 'all .35s',
 
   vars: {
-    [inputLabelSizeVar]: fontSizes.xs,
+    [inputLabelSizeVar]: vars.fontSizes.xs,
   },
 })
 
@@ -158,7 +158,7 @@ export const label = style([
 const inputMessageColorVar = createVar()
 export const message = recipe({
   base: {
-    fontSize: fontSizes.xs,
+    fontSize: vars.fontSizes.xs,
     color: toRgba(inputMessageColorVar),
     textAlign: 'left',
     position: 'absolute',

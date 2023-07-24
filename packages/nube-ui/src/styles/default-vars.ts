@@ -28,6 +28,8 @@ export const colorVarsDarkDefault: Colors = {
 }
 
 export const fontSizes = {
+  '3xs': pxToRem(8),
+  '2xs': pxToRem(10),
   xs: pxToRem(12),
   sm: pxToRem(14),
   md: pxToRem(16),
@@ -93,3 +95,4 @@ export const spaces = {
   80: '20rem',
   96: '24rem',
 }
+

@@ -102,8 +102,8 @@ export const base = recipe({
     circle: {
       true: {
         borderRadius: '50%',
-        width: buttonHeightVar
-      }
+        width: buttonHeightVar,
+      },
     },
     outline: {
       true: {
@@ -116,33 +116,33 @@ export const base = recipe({
     },
     size: {
       sm: {
-        fontSize: fontSizes.sm,
+        fontSize: vars.fontSizes.sm,
         vars: {
           [buttonPaddingVar]: pxToRem(10),
-          [buttonHeightVar]: pxToRem(32)
+          [buttonHeightVar]: pxToRem(32),
         },
       },
       md: {
-        fontSize: fontSizes.md,
+        fontSize: vars.fontSizes.md,
         vars: {
           [buttonPaddingVar]: pxToRem(15),
-          [buttonHeightVar]: pxToRem(40)
+          [buttonHeightVar]: pxToRem(40),
         },
       },
       lg: {
         height: pxToRem(48),
-        fontSize: fontSizes.lg,
+        fontSize: vars.fontSizes.lg,
         vars: {
           [buttonPaddingVar]: pxToRem(20),
-          [buttonHeightVar]: pxToRem(48)
+          [buttonHeightVar]: pxToRem(48),
         },
       },
       xl: {
         height: pxToRem(60),
-        fontSize: fontSizes.xl,
+        fontSize: vars.fontSizes.xl,
         vars: {
           [buttonPaddingVar]: pxToRem(30),
-          [buttonHeightVar]: pxToRem(60)
+          [buttonHeightVar]: pxToRem(60),
         },
       },
     },
