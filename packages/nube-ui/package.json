@@ -5,6 +5,7 @@
   "version": "0.0.1-alpha.5",
   "type": "module",
   "license": "MIT",
+  "repository": "nube-ui/nube-ui",
   "scripts": {
     "dev": "vite",
     "build:types": "vue-tsc --emitDeclarationOnly",
