@@ -2,17 +2,17 @@
 
 ## Install
 
-1. Add `nuve-ui/nube-ui` dependency to your project
+1. Add `nube-ui/nube-ui` dependency to your project
 
 ```bash
 # Using pnpm
-pnpm add nuve-ui/nube-ui
+pnpm add nube-ui/nube-ui
 
 # Using yarn
-yarn add nuve-ui/nube-ui
+yarn add nube-ui/nube-ui
 
 # Using npm
-npm install nuve-ui/nube-ui
+npm install nube-ui/nube-ui
 ```
 
 2. Import to main.js

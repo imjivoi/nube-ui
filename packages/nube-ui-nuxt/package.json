@@ -2,7 +2,7 @@
   "name": "nube-ui-nuxt",
   "version": "1.0.0",
   "description": "Nuxt module for Nube UI",
-  "repository": "nube/nube-ui-nuxt",
+  "repository": "nube-ui/nube-ui-nuxt",
   "license": "MIT",
   "type": "module",
   "exports": {
