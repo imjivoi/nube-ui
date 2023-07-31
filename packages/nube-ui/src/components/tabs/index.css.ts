@@ -102,6 +102,7 @@ export const tab = style({
   selectors: {
     '&:disabled': {
       cursor: 'not-allowed',
+      opacity: '0.5'
     },
     '&[aria-selected="true"]': {
       color: tabActiveTextColorVar,
