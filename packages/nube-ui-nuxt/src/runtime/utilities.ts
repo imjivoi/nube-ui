@@ -5,7 +5,7 @@ export function resolveUtilities() {
   const cssUtilitiesPath = `${config.libName}/dist/utilities`
 
   addImports({
-    name: 'css',
+    name: 'sprinkles',
     as: 'sprinkles',
     from: cssUtilitiesPath,
   })

@@ -1,5 +1,5 @@
 <template>
-  <button
+  <component :is="tag"
     v-bind="buttonAttrs"
     v-ripple="
       !noRipple
@@ -17,7 +17,7 @@
     <div :class="styles.content({ loading })">
       <slot />
     </div>
-  </button>
+  </component>
 </template>
 <script lang="ts">
 export default {
@@ -28,14 +28,14 @@ export default {
 }
 </script>
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, useAttrs } from 'vue'
 
 import { NLoading } from '../../components/loading'
 import { vRipple } from '../../directives'
 
 import * as styles from './index.css'
-
 import type { ColorType } from '@/styles'
+
 import { toRgba } from '../../utils'
 
 export interface ButtonProps {
@@ -53,6 +53,7 @@ export interface ButtonProps {
   disabled?: boolean
   noRipple?: boolean
   block?: boolean
+  tag?: string
 }
 
 const props = withDefaults(defineProps<ButtonProps>(), {
@@ -60,6 +61,7 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   size: 'md',
   shadow: false,
   block: false,
+  tag: 'button'
 })
 
 const buttonAttrs = computed(() => ({
@@ -80,5 +82,6 @@ const buttonAttrs = computed(() => ({
     loading: props.loading,
     block: props.block,
   }),
+  ...useAttrs()
 }))
 </script>

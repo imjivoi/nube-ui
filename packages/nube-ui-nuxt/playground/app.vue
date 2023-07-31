@@ -1,7 +1,7 @@
 <template>
   <div>
-    <span :class="css({ color: 'primary', mb: 10, d: 'block' })">Nuxt module playground!</span>
-    <n-button>Button</n-button>
+    <span>Nuxt module playground!</span>
+    <n-button tag="a" href="/">Button</n-button>
   </div>
 </template>
 

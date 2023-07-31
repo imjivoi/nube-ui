@@ -299,7 +299,7 @@ const positionProperties = defineProperties({
 	},
 })
 
-export const css = createSprinkles(
+export const sprinkles = createSprinkles(
 	spaceProperties,
 	responsiveProperties,
 	textProperties,

@@ -1,13 +1,13 @@
 import { defineNuxtModule } from '@nuxt/kit'
 
 import { resolveComponents } from './runtime/components'
-import { resolveHelpers } from './runtime/helpers'
+import { resolveUtilities } from './runtime/utilities'
 import { getMainStyles, getDefaultTheme } from './runtime/styles'
 
 // Module options TypeScript interface definition
 export interface ModuleOptions {
   prefix?: string
-  helpers?: boolean
+  utilities?: boolean
   defaultTheme?: boolean
 }
 
@@ -19,16 +19,16 @@ export default defineNuxtModule<ModuleOptions>({
   // Default configuration options of the Nuxt module
   defaults: {
     prefix: '',
-    helpers: true,
+    utilities: true,
     defaultTheme: true,
   },
   setup(options, nuxt) {
-    const { prefix, helpers, defaultTheme } = options
+    const { prefix, utilities, defaultTheme } = options
 
     resolveComponents({ prefix })
 
-    if (helpers) {
-      resolveHelpers()
+    if (utilities) {
+      resolveUtilities()
     }
 
     const styles = getMainStyles()

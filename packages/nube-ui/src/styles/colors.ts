@@ -11,7 +11,7 @@ export type ColorType = (typeof ColorVariants)[number]
  * @param {object} cssVars
  * @returns {object}
  */
-export function createColorVariantVars(cssVar: CSSVarFunction): Record<ColorType, any> {
+export function createColorVariantVars(cssVar: CSSVarFunction): Record<ColorType, string> {
   const result = new Map()
 
   for (const color of ColorVariants) {

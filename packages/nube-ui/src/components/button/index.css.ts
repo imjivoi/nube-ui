@@ -1,5 +1,5 @@
 import { createVar, globalStyle, keyframes, style } from '@vanilla-extract/css'
-import { recipe } from '@vanilla-extract/recipes'
+import { recipe, RecipeVariants } from '@vanilla-extract/recipes'
 
 import { vars, fontSizes, fontWeights, createColorVariantVars } from '@/styles'
 import { pxToRem, toRgba } from '../../utils'
@@ -50,6 +50,7 @@ export const base = recipe({
     fontWeight: fontWeights[500],
     fontFamily: 'inherit',
     color: '#fff',
+    textDecoration: 'none',
     // ':hover': {
     //   background: toRgba(buttonBackgroundColorVar, 0.8),
     // },
@@ -244,6 +245,8 @@ export const base = recipe({
     size: 'md',
   },
 })
+
+export type ButtonVariants = RecipeVariants<typeof base>
 
 export const loading = style({
   position: 'absolute',
