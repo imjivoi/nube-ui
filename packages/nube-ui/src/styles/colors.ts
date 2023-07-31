@@ -4,14 +4,14 @@ import { vars } from './'
 
 export const ColorVariants = ['primary', 'secondary', 'success', 'warning', 'danger'] as const
 
-export type ColorType = (typeof ColorVariants)[number]
+export type ColorVariantType = (typeof ColorVariants)[number]
 
 /**
  *
  * @param {object} cssVars
  * @returns {object}
  */
-export function createColorVariantVars(cssVar: CSSVarFunction): Record<ColorType, string> {
+export function createColorVariantVars(cssVar: CSSVarFunction): Record<ColorVariantType, string> {
   const result = new Map()
 
   for (const color of ColorVariants) {
