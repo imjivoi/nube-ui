@@ -49,7 +49,7 @@ export const base = recipe({
     height: buttonHeightVar,
     fontWeight: fontWeights[500],
     fontFamily: 'inherit',
-    color: '#fff',
+    color: toRgba(buttonTextColorVar),
     textDecoration: 'none',
     // ':hover': {
     //   background: toRgba(buttonBackgroundColorVar, 0.8),
@@ -70,6 +70,9 @@ export const base = recipe({
         transform: `scale(0.95)`,
       },
     },
+    vars: {
+      [buttonTextColorVar]: '255, 255, 255'
+    }
   },
   variants: {
     variant: {

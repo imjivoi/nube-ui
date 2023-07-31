@@ -34,12 +34,12 @@ import { NLoading } from '../../components/loading'
 import { vRipple } from '../../directives'
 
 import * as styles from './index.css'
-import type { ColorType } from '@/styles'
+import type { ColorVariantType } from '@/styles'
 
 import { toRgba } from '../../utils'
 
 export interface ButtonProps {
-  variant?: ColorType | 'gradient'
+  variant?: ColorVariantType | 'gradient'
   flat?: boolean
   shadow?: boolean
   pill?: boolean

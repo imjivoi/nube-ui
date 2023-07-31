@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import {Icon} from '@iconify/vue'
+import { Icon } from '@iconify/vue'
 
 import { NButton } from '@/components'
 
@@ -10,7 +10,10 @@ const meta = {
   // This component will have an automatically generated docsPage entry: https://storybook.js.org/docs/vue/writing-docs/autodocs
   argTypes: {
     size: { control: 'select', options: ['sm', 'md', 'lg', 'xl'] },
-    variant: { control: 'select', options: ['primary', 'secondary', 'success', 'warning', 'danger', 'gradient'] },
+    variant: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'warning', 'danger', 'gradient'],
+    },
     flat: { control: 'boolean' },
     outline: { control: 'boolean' },
     shadow: { control: 'boolean' },
@@ -107,34 +110,32 @@ export const Wide: Story = {
 
 export const Block: Story = {}
 Block.decorators = [
-  (args)=> {
+  (args) => {
     return {
-
       components: { NButton },
       setup() {
         return { args, variants: ['primary', 'secondary', 'success', 'warning', 'danger'] }
       },
-      template:`<div style="grid; gap: 1rem">
+      template: `<div style="grid; gap: 1rem">
             <NButton v-bind="args" block v-for="variant in variants" :variant="variant">Button</NButton>
-            </div>`
+            </div>`,
     }
-  }
+  },
 ]
 
 export const Size: Story = {}
 Size.decorators = [
-  (args)=> {
+  (args) => {
     return {
-
       components: { NButton },
       setup() {
         return { args, sizes: ['sm', 'md', 'lg', 'xl'] }
       },
-      template:`<div style="display:flex; gap: 1rem">
+      template: `<div style="display:flex; gap: 1rem">
             <NButton v-bind="args" block v-for="size in sizes" :size="size">{{size}}</NButton>
-            </div>`
+            </div>`,
     }
-  }
+  },
 ]
 
 export const Disabled: Story = {
@@ -145,14 +146,13 @@ export const Disabled: Story = {
 
 export const IconButton: Story = {}
 IconButton.decorators = [
-  (args)=> {
+  (args) => {
     return {
-
       components: { NButton, Icon },
       setup() {
         return { args, sizes: ['sm', 'md', 'lg', 'xl'] }
       },
-      template:`<div style="display:flex; gap: 1rem">
+      template: `<div style="display:flex; gap: 1rem">
                   <NButton v-bind="args" > 
                     <Icon icon="ic:baseline-favorite" />
                   </NButton>
@@ -165,7 +165,7 @@ IconButton.decorators = [
                   <NButton v-bind="args" flat circle variant="danger"> 
                     <Icon icon="ic:baseline-favorite" />
                   </NButton>
-                </div>`
+                </div>`,
     }
-  }
+  },
 ]
