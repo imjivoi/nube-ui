@@ -46,7 +46,7 @@ export default {
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
 
-import type { ColorType } from '@/styles'
+import type { ColorVariantType } from '@/styles'
 
 import * as styles from './index.css'
 import { ref } from 'vue'
@@ -59,7 +59,7 @@ export interface InputProps {
   shadow?: boolean
   message?: string
   border?: boolean
-  variant?: ColorType
+  variant?: ColorVariantType
   prefix?: string
   suffix?: string
   type?: 'text' | 'password' | 'number' | 'email' | 'tel' | 'date' | 'url' | 'datetime-local'

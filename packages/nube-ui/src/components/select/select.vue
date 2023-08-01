@@ -43,12 +43,12 @@ import { Listbox, ListboxButton, ListboxOptions, ListboxLabel } from '@headlessu
 import SelectItem from './select-item.vue'
 
 import * as styles from './index.css'
-import { ColorType } from '../../styles'
+import { ColorVariantType } from '../../styles'
 
 export interface SelectProps {
   modelValue: any
   items?: Array<{ label: string; value: string; key?: string }>
-  variant?: ColorType
+  variant?: ColorVariantType
   placeholder?: string
   label?: string
   labelPlaceholder?: string

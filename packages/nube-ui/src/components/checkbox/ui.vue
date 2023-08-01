@@ -24,12 +24,12 @@ import { computed } from 'vue'
 
 import * as styles from './index.css'
 
-import type { ColorType } from '@/styles'
+import type { ColorVariantType } from '@/styles'
 
 export interface CheckboxProps {
   modelValue: boolean | string[]
   value?: string
-  variant?: ColorType
+  variant?: ColorVariantType
   disabled?: boolean
   size?: 'sm' | 'md' | 'lg' 
 }

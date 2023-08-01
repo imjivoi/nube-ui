@@ -28,7 +28,7 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { ColorType } from '../../styles'
+import { ColorVariantType } from '../../styles'
 import * as styles from './index.css'
 
 export interface TextareaProps {
@@ -39,7 +39,7 @@ export interface TextareaProps {
   shadow?: boolean
   message?: string
   border?: boolean
-  variant?: ColorType
+  variant?: ColorVariantType
   disabled?: boolean
 }
 

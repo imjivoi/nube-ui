@@ -40,11 +40,11 @@ import { Icon } from '@iconify/vue'
 import { NButton } from '../button'
 import { NDropdownItem } from './'
 
-import { ColorType } from '../../styles'
+import { ColorVariantType } from '../../styles'
 import * as styles from './index.css'
 
 export interface DropdownProps {
-  variant?: ColorType
+  variant?: ColorVariantType
   flat?: boolean
   plain?: boolean
   shadow?: boolean

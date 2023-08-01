@@ -1,6 +1,7 @@
 import type { Preview } from '@storybook/vue3'
 
 import { lightTheme, darkTheme } from '../src/theme/example.css'
+import '../src/theme/default.css'
 import { vars } from '../src/styles/vars.css'
 
 import { toRgba } from '../src/utils'
@@ -58,13 +59,13 @@ const preview: Preview = {
         }
       },
       template: `
-        <div v-if="theme === 'side-by-side'" style="display:flex">
+        <div id="theme" v-show="theme === 'side-by-side'" style="display:flex">
           <div :class="lightTheme" class="preview" :style="styles"><story />
           </div>
           <div :class="darkTheme" class="preview" :style="styles"><story />
           </div>
         </div>
-        <div :class="themeClass" class="preview" :style="styles" v-else><story />
+        <div id="theme" :class="themeClass" class="preview" :style="styles" v-show=" ['dark', 'light'].includes(theme)"><story />
         </div>
       `,
     }),

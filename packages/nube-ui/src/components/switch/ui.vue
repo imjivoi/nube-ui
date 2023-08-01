@@ -17,13 +17,13 @@ export default {
 <script lang="ts" setup>
 import { computed } from 'vue'
 
-import type { ColorType } from '@/styles'
+import type { ColorVariantType } from '@/styles'
 
 import * as styles from './index.css'
 
 export interface SwitchProps {
   modelValue: boolean
-  variant?: ColorType
+  variant?: ColorVariantType
 }
 
 interface Emits {

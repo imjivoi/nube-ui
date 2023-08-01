@@ -13,7 +13,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "dep": "pnpm run build && pnpm version prerelease --preid=alpha && pnpm publish --tag next"
+    "publish": "pnpm run build && pnpm version prerelease --preid=alpha && pnpm publish --tag next"
   },
   "files": [
     "dist/**"

@@ -20,10 +20,10 @@ import { ListboxOption } from '@headlessui/vue'
 import { Icon } from '@iconify/vue'
 
 import * as styles from './index.css'
-import { ColorType } from '../../styles'
+import { ColorVariantType } from '../../styles'
 
 export interface SelectItemProps {
-  variant?: ColorType
+  variant?: ColorVariantType
   value: any
 }
 

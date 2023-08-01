@@ -24,13 +24,13 @@ export default {
 <script setup lang="ts">
 import { useElementBounding, useElementHover } from '@vueuse/core'
 import { computed, ref } from 'vue'
-import { ColorType } from '../../styles'
+import { ColorVariantType } from '../../styles'
 
 import * as styles from './index.css'
 
 export interface TooltipProps {
   position?: 'top' | 'bottom' | 'left' | 'right'
-  variant?: ColorType | 'default'
+  variant?: ColorVariantType | 'default'
 }
 
 const props = withDefaults(defineProps<TooltipProps>(), {

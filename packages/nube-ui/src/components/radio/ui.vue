@@ -24,12 +24,12 @@ export default {
 import { computed } from 'vue'
 
 import * as styles from './index.css'
-import type { ColorType } from '@/styles'
+import type { ColorVariantType } from '@/styles'
 
 export interface RadioProps {
   modelValue?: string
   value: string
-  variant?: ColorType
+  variant?: ColorVariantType
 }
 
 interface Emits {

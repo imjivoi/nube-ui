@@ -11,12 +11,12 @@ export default {
 <script setup lang="ts">
 import { MenuItem } from '@headlessui/vue'
 
-import { ColorType } from '../../styles'
+import { ColorVariantType } from '../../styles'
 
 import * as styles from './index.css'
 
 export interface DropdownItemProps {
-  variant?: ColorType
+  variant?: ColorVariantType
   flat?: boolean
   plain?: boolean
   shadow?: boolean

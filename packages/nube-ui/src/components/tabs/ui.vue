@@ -34,15 +34,15 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { ref, onMounted, computed, nextTick } from 'vue'
+import { ref, onMounted, computed, nextTick, PropType } from 'vue'
 import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 
-import * as styles from './index.css.ts'
+import * as styles from './index.css'
 
 import type { ColorVariantType } from '../../styles'
 
-interface Tab {
+export interface Tab {
   label: string
   value: string
   content?: any
@@ -55,27 +55,30 @@ const emits = defineEmits<{
 
 const props = defineProps({
   modelValue: {
+    type: String,
+    required: true,
     validator(value) {
       if (!value) {
         throw new Error('modelValue is required')
       }
+      return true
     },
   },
   options: {
-    type: Array as Proptype<Tab[]>,
+    type: Array as PropType<Tab[]>,
     required: true,
   },
   variant: {
-    type: String as Proptype<ColorVariantType | 'default'>,
+    type: String as PropType<ColorVariantType | 'default'>,
     default: 'default',
   },
   pill: {
     type: Boolean,
-    default: true,
+    default: false,
   },
   rounded: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   square: {
     type: Boolean,
@@ -89,21 +92,21 @@ const props = defineProps({
 
 const selectedTabWidth = ref(0)
 const selectedTabLeft = ref(0)
-const tabRefs = ref<HTMLElement[]>([])
+const tabRefs = ref<{ el: HTMLButtonElement }[]>([])
 
 const selectedTab = computed({
   get() {
-    return props.modelValue || props.options.find((o) => !o.disabled)
+    return props.modelValue || props.options[0].value
   },
-  set(idx) {
-    const option = props.options[idx]
+  set(idx: string | number) {
+    const option = props.options[Number(idx)]
     emits('update:modelValue', option.value)
   },
 })
 
 const selectedTabIndex = computed(() => props.options?.findIndex((option) => option.value === props.modelValue))
 
-function changeTab(idx) {
+function changeTab(idx: number) {
   selectedTab.value = idx
   nextTick(() => {
     getTabProperties()
@@ -111,7 +114,7 @@ function changeTab(idx) {
 }
 
 function getTabProperties() {
-  const el = tabRefs.value[selectedTabIndex.value].el
+  const el = tabRefs.value[selectedTabIndex.value]!.el
   selectedTabWidth.value = el.offsetWidth
   selectedTabLeft.value = el.offsetLeft
 }

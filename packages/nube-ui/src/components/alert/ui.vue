@@ -17,11 +17,11 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { ColorType } from '../../styles'
+import { ColorVariantType } from '../../styles'
 import * as styles from './index.css'
 
 export interface AlertProps {
-  variant?: ColorType
+  variant?: ColorVariantType
   flat?: boolean
   shadow?: boolean
   rounded?: boolean

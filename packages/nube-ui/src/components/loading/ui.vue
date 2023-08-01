@@ -10,13 +10,13 @@ export default {
 import { computed } from 'vue'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 
-import type { ColorType } from '@/styles'
+import type { ColorVariantType } from '@/styles'
 
 import * as styles from './index.css'
 
 export interface LoadingProps {
   size?: 'sm' | 'md' | 'lg' | 'xl'
-  variant?: ColorType
+  variant?: ColorVariantType
   css?: Partial<Record<'color' | 'size' | 'border', string>>
 }
 
