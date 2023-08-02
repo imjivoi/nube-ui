@@ -1,6 +1,6 @@
 <template>
   <label :class="styles.base">
-    <div :class="styles.container({ color: variant, checked: isChecked })">
+    <div :class="styles.container({ variant, checked: isChecked })">
       <div :class="styles.checkmark">
         <i :class="styles.checkmarkIcon">
           <span>
@@ -31,7 +31,7 @@ export interface CheckboxProps {
   value?: string
   variant?: ColorVariantType
   disabled?: boolean
-  size?: 'sm' | 'md' | 'lg' 
+  // size?: 'sm' | 'md' | 'lg'
 }
 
 interface Emits {

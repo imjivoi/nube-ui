@@ -39,7 +39,7 @@ export const container = recipe({
     },
   },
   variants: {
-    color: createColorVariantVars(checkboxCheckedBackgroundVar),
+    variant: createColorVariantVars(checkboxCheckedBackgroundVar),
     checked: {
       true: {
         background: toRgba(checkboxCheckedBackgroundVar),
@@ -52,7 +52,7 @@ export const container = recipe({
     },
   },
   defaultVariants: {
-    color: 'primary',
+    variant: 'primary',
   },
 })
 
