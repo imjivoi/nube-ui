@@ -52,4 +52,14 @@ describe('Checkbox', () => {
     expect(wrapper.html()).toContain('variant_secondary')
   })
 
+  it('has label text', () => {
+    const labelText = 'Checkbox label'
+    const wrapper = mount(Checkbox, {
+      slots: {
+        default: labelText,
+      },
+    })
+
+    expect(wrapper.html()).toContain(labelText)
+  })
 })
