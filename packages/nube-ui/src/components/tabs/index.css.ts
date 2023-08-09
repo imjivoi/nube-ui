@@ -25,21 +25,13 @@ export const tablist = recipe({
     position: 'relative',
     vars: {
       [tabListBackgroundColorVar]: vars.colors.gray,
-      [tabActiveTextColorVar]: '#fff'
+      [tabActiveTextColorVar]: '#fff',
     },
   },
   variants: {
     noBackground: {
       true: {
         background: 'transparent !important',
-      },
-    },
-    pill: {
-      true: {
-        vars: {
-          [tabListBorderRadiusVar]: '20px',
-          [tabSliderBorderRadiusVar]: '15px',
-        },
       },
     },
     rounded: {
@@ -50,6 +42,15 @@ export const tablist = recipe({
         },
       },
     },
+    pill: {
+      true: {
+        vars: {
+          [tabListBorderRadiusVar]: '20px',
+          [tabSliderBorderRadiusVar]: '15px',
+        },
+      },
+    },
+
     square: {
       true: {
         vars: {
@@ -62,7 +63,7 @@ export const tablist = recipe({
       default: {
         vars: {
           [tabSliderColorVar]: vars.colors.background,
-          [tabActiveTextColorVar] : toRgba(vars.colors.text)
+          [tabActiveTextColorVar]: toRgba(vars.colors.text),
         },
       },
       ...createColorVariantVars(tabSliderColorVar),
@@ -102,7 +103,7 @@ export const tab = style({
   selectors: {
     '&:disabled': {
       cursor: 'not-allowed',
-      opacity: '0.5'
+      opacity: '0.5',
     },
     '&[aria-selected="true"]': {
       color: tabActiveTextColorVar,

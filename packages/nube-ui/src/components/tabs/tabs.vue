@@ -1,15 +1,8 @@
 <template>
-  <TabGroup :selectedIndex="selectedTabIndex" @change="changeTab">
+  <TabGroup as="div" :selectedIndex="selectedTabIndex" @change="changeTab">
     <TabList :class="styles.tablist({ pill, rounded, square, noBackground, variant })">
-      <Tab
-        v-for="(option, idx) in options"
-        :ref="`tabRefs`"
-        :key="idx"
-        :disabled="option.disabled"
-        :class="styles.tab"
-        v-slot="{ selected }"
-      >
-        {{ option.label }}
+      <Tab :ref="`tabRefs`" :class="styles.tab" v-for="tab in tabs" :key="tab.value" :disabled="tab.disabled">
+        {{ tab.label }}
       </Tab>
       <div
         :class="styles.tabSlider"
@@ -22,9 +15,7 @@
       ></div>
     </TabList>
     <TabPanels>
-      <TabPanel v-for="(option, idx) in options" :key="idx">
-        <slot name="content" :content="option.content" />
-      </TabPanel>
+      <slot />
     </TabPanels>
   </TabGroup>
 </template>
@@ -34,8 +25,8 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import { ref, onMounted, computed, nextTick, PropType } from 'vue'
-import { TabGroup, TabList, Tab, TabPanels, TabPanel } from '@headlessui/vue'
+import { ref, onMounted, computed, nextTick, PropType, provide } from 'vue'
+import { TabGroup, TabList, Tab, TabPanels } from '@headlessui/vue'
 import { assignInlineVars } from '@vanilla-extract/dynamic'
 
 import * as styles from './index.css'
@@ -64,10 +55,6 @@ const props = defineProps({
       return true
     },
   },
-  options: {
-    type: Array as PropType<Tab[]>,
-    required: true,
-  },
   variant: {
     type: String as PropType<ColorVariantType | 'default'>,
     default: 'default',
@@ -90,36 +77,43 @@ const props = defineProps({
   },
 })
 
+const tabs = ref<Array<{ value: string; label: string; disabled: boolean }>>([])
+
+provide('tabs', tabs)
+
+const selectedTabIndex = ref(0)
 const selectedTabWidth = ref(0)
 const selectedTabLeft = ref(0)
 const tabRefs = ref<{ el: HTMLButtonElement }[]>([])
 
 const selectedTab = computed({
   get() {
-    return props.modelValue || props.options[0].value
+    return props.modelValue
   },
   set(idx: string | number) {
-    const option = props.options[Number(idx)]
-    emits('update:modelValue', option.value)
+    const tab = tabs.value[Number(idx)]
+    emits('update:modelValue', tab.value)
   },
 })
 
-const selectedTabIndex = computed(() => props.options?.findIndex((option) => option.value === props.modelValue))
-
-function changeTab(idx: number) {
+async function changeTab(idx: number) {
+  selectedTabIndex.value = idx
   selectedTab.value = idx
-  nextTick(() => {
-    getTabProperties()
-  })
+  await nextTick()
+  getTabProperties()
 }
 
 function getTabProperties() {
-  const el = tabRefs.value[selectedTabIndex.value]!.el
+  if (!tabRefs.value) return
+  const el = tabRefs.value[selectedTabIndex.value]?.el
+  if (!el) return
   selectedTabWidth.value = el.offsetWidth
   selectedTabLeft.value = el.offsetLeft
 }
 
-onMounted(() => {
-  getTabProperties()
+onMounted(async () => {
+  await nextTick()
+  const defaultIndex = tabs.value.findIndex((tab) => tab.value === props.modelValue)
+  changeTab(defaultIndex || selectedTabIndex.value)
 })
 </script>

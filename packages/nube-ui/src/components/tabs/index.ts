@@ -1,7 +1,13 @@
-export { default as NTabs } from './ui.vue'
+export { default as NTabs } from './tabs.vue'
+export { default as NTab } from './tab.vue'
 
-import component from './ui.vue'
+import NTabs from './tabs.vue'
+import NTab from './tab.vue'
 
-component.install = (vue: any) => {
-  vue.component(component.name, component)
+NTabs.install = (vue: any) => {
+  vue.component(NTabs.name, NTabs)
+}
+
+NTab.install = (vue: any) => {
+  vue.component(NTab.name, NTab)
 }

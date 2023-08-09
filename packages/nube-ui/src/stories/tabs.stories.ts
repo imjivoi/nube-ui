@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 import { ref } from 'vue'
 
-import { NTabs, NButton } from '../components'
+import { NTabs, NTab } from '../components'
 
 // More on how to set up stories at: https://storybook.js.org/docs/vue/writing-stories/introduction
 const meta = {
@@ -21,14 +21,14 @@ const meta = {
     // modelValue: false,
   },
   render: (args) => ({
-    components: { NTabs },
+    components: { NTabs, NTab },
     setup() {
       const options = [
         { label: 'Vue', value: 'vue' },
         { label: 'React', value: 'react' },
         { label: 'Angular', value: 'angular' },
       ]
-      const selected = ref('vue')
+      const selected = ref('react')
       return {
         args,
         options,
@@ -36,7 +36,8 @@ const meta = {
       }
     },
     template: `
-          <NTabs v-model="selected" v-bind="args" :options="options">
+          <NTabs v-model="selected" v-bind="args">
+            <NTab v-for="option in options" :key="option.value" :label="option.label" :value="option.value" />
           </NTabs>
       `,
   }),
@@ -51,6 +52,9 @@ export const Default: Story = {}
 
 export const Rounded: Story = {}
 Rounded.args = { rounded: true }
+
+export const Pill: Story = {}
+Pill.args = { pill: true }
 
 export const Square: Story = {}
 Square.args = { square: true }
@@ -77,11 +81,11 @@ export const Content: Story = {}
 Content.decorators = [
   (args) => {
     return {
-      components: { NTabs },
+      components: { NTabs, NTab },
       setup() {
         return {
           args,
-          selected: ref('vue'),
+          selected: ref('react'),
           options: [
             { label: 'Vue', value: 'vue', content: '<strong>Vue</strong> blabla bla' },
             { label: 'React', value: 'react', content: 'React bla bla gbla' },
@@ -90,10 +94,10 @@ Content.decorators = [
         }
       },
       template: `
-            <NTabs v-model="selected" v-bind="args" :options="options">
-              <template v-slot:content="{ content }">
-                <span v-html="content"></span>
-              </template>
+            <NTabs v-model="selected" v-bind="args" >
+              <NTab label="Vue" value="vue"><strong>Vue</strong> blabla bla</NTab>
+              <NTab label="React" value="react">React bla bla gbla</NTab>
+              <NTab label="Angular" value="abgular">Angular blabla bla</NTab>
             </NTabs>
         `,
     }
@@ -104,7 +108,7 @@ export const Disabled: Story = {}
 Disabled.decorators = [
   (args) => {
     return {
-      components: { NTabs },
+      components: { NTabs, NTab },
       setup() {
         return {
           args,
@@ -117,7 +121,8 @@ Disabled.decorators = [
         }
       },
       template: `
-            <NTabs v-model="selected" v-bind="args" :options="options">
+            <NTabs v-model="selected" v-bind="args">
+              <NTab v-for="option in options" :key="option.value" :label="option.label" :value="option.value" :disabled="option.disabled"></NTab>
             </NTabs>
         `,
     }
