@@ -33,49 +33,20 @@ import * as styles from './index.css'
 
 import type { ColorVariantType } from '../../styles'
 
-export interface Tab {
-  label: string
-  value: string
-  content?: any
-  disabled?: boolean
-}
-
 const emits = defineEmits<{
   (e: 'update:modelValue', value: string): void
 }>()
 
-const props = defineProps({
-  modelValue: {
-    type: String,
-    required: true,
-    validator(value) {
-      if (!value) {
-        throw new Error('modelValue is required')
-      }
-      return true
-    },
-  },
-  variant: {
-    type: String as PropType<ColorVariantType | 'default'>,
-    default: 'default',
-  },
-  pill: {
-    type: Boolean,
-    default: false,
-  },
-  rounded: {
-    type: Boolean,
-    default: true,
-  },
-  square: {
-    type: Boolean,
-    default: false,
-  },
-  noBackground: {
-    type: Boolean,
-    default: false,
-  },
-})
+interface TabsProps {
+  modelValue: string
+  variant: ColorVariantType | 'default'
+  pill?: boolean
+  rounded?: boolean
+  square?: boolean
+  noBackground?: boolean
+}
+
+const props = defineProps<TabsProps>()
 
 const tabs = ref<Array<{ value: string; label: string; disabled: boolean }>>([])
 

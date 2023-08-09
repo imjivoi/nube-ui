@@ -3,24 +3,22 @@
     <slot />
   </TabPanel>
 </template>
+<script lang="ts">
+export default {
+  name: 'NTab',
+}
+</script>
 <script setup lang="ts">
 import { TabPanel } from '@headlessui/vue'
 import { inject, Ref, toRefs } from 'vue'
 
-const props = defineProps({
-  label: {
-    type: String,
-    required: true,
-  },
-  value: {
-    type: String,
-    required: true,
-  },
-  disabled: {
-    type: Boolean,
-    default: false,
-  },
-})
+interface TabProps {
+  label: string
+  value: string
+  disabled?: boolean
+}
+
+const props = defineProps<TabProps>()
 
 const tabs = inject<Ref<[]>>('tabs')
 //@ts-ignore
