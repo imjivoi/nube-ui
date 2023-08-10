@@ -39,8 +39,9 @@ const meta = {
     setup() {
       return { args, variants: ['primary', 'secondary', 'success', 'warning', 'danger'] }
     },
-    template:
-      '<div style="display: flex; gap: 1rem"> <NButton v-bind="args" v-for="variant in variants" :variant="variant" >{{variant}}</NButton></div>',
+    template: `<div style="display: flex; gap: 1rem"> 
+      <NButton v-bind="args" v-for="variant in variants" :variant="variant" >{{variant}}</NButton>
+      </div>`,
   }),
   tags: ['autodocs'],
 } satisfies Meta<typeof NButton>
@@ -116,8 +117,8 @@ Block.decorators = [
       setup() {
         return { args, variants: ['primary', 'secondary', 'success', 'warning', 'danger'] }
       },
-      template: `<div style="grid; gap: 1rem">
-            <NButton v-bind="args" block v-for="variant in variants" :variant="variant">Button</NButton>
+      template: `<div style="display:grid; gap: 1rem">
+            <NButton v-bind="args" block v-for="variant in variants">Button</NButton>
             </div>`,
     }
   },

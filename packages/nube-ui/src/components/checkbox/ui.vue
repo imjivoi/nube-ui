@@ -1,17 +1,17 @@
 <template>
-  <label :class="styles.base">
-    <div :class="styles.container({ variant, checked: isChecked })">
-      <div :class="styles.checkmark">
-        <i :class="styles.checkmarkIcon">
+  <label :class="classes.root()">
+    <div :class="classes.container()">
+      <div :class="classes.checkmark()">
+        <i :class="classes.checkmarkIcon()">
           <span>
-            <span :class="styles.checkmarkFirstLine({ checked: isChecked })"></span>
-            <span :class="styles.checkmarkSecondLine({ checked: isChecked })"></span>
+            <span :class="classes.checkmarkFirstLine()"></span>
+            <span :class="classes.checkmarkSecondLine()"></span>
           </span>
         </i>
       </div>
-      <input type="checkbox" :disabled="disabled" v-model="model" :value="value" :class="styles.input" />
+      <input type="checkbox" :disabled="disabled" v-model="model" :value="value" :class="classes.input()" />
     </div>
-    <span v-if="$slots.default" :class="styles.label"><slot /></span>
+    <span v-if="$slots.default" :class="classes.label()"><slot /></span>
   </label>
 </template>
 <script lang="ts">
@@ -22,7 +22,7 @@ export default {
 <script setup lang="ts">
 import { computed } from 'vue'
 
-import * as styles from './index.css'
+import { checkbox } from './styles'
 
 import type { ColorVariantType } from '@/styles'
 
@@ -57,4 +57,6 @@ const isChecked = computed(() => {
 
   return true
 })
+
+const classes = computed(() => checkbox({ variant: props.variant, checked: isChecked.value }))
 </script>

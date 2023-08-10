@@ -1,6 +1,6 @@
 <template>
-  <div :class="styles.base({ variant, size, rounded, pill, square, flat, outline })">
-    <span :class="styles.content">
+  <div :class="classes.root()">
+    <span :class="classes.content()">
       <slot />
     </span>
   </div>
@@ -11,7 +11,10 @@ export default {
 }
 </script>
 <script setup lang="ts">
-import * as styles from './index.css'
+import { computed } from 'vue'
+import { ColorVariantType } from '../../styles'
+
+import { chip } from './styles'
 
 interface ChipProps {
   variant?: ColorVariantType | 'default'
@@ -28,4 +31,6 @@ const props = withDefaults(defineProps<ChipProps>(), {
   size: 'md',
   rounded: true,
 })
+
+const classes = computed(() => chip(props))
 </script>

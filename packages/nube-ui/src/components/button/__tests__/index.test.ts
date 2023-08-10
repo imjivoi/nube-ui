@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import Button from '../ui.vue'
+import {button as classes} from '../styles'
 import Loading from '../../loading/ui.vue'
 
 //**TODO: add test ripple */
@@ -9,10 +10,8 @@ import Loading from '../../loading/ui.vue'
 describe('Button', () => {
   it('render default props', () => {
     const wrapper = mount(Button)
-
-    expect(wrapper.html()).toContain('button_base')
-    expect(wrapper.html()).toContain('variant_primary')
-    expect(wrapper.html()).toContain('size_md')
+    
+    expect(wrapper.classes().join(' ')).toContain(classes().root())
   })
 
   it('contain text', () => {

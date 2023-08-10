@@ -73,7 +73,7 @@ const handleRipple = (element: HTMLElement, binding: any, ev: any) => {
   ripple.style.pointerEvents = 'none'
   ripple.style.position = 'relative'
   ripple.style.zIndex = '0'
-  ripple.style.backgroundColor = binding.value?.background || 'rgba(0,0,0,0.3)'
+  ripple.className = binding.value?.background || 'bg-black/30'
 
   //Styles for rippleContainer
   rippleContainer.style.position = 'absolute'

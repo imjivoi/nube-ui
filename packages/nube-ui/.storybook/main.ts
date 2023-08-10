@@ -15,7 +15,12 @@ const config: StorybookConfig = {
   },
   async viteFinal(config) {
     return mergeConfig(config, {
-      plugins: [require('@vanilla-extract/vite-plugin').vanillaExtractPlugin()],
+      plugins: [
+        require('@vanilla-extract/vite-plugin').vanillaExtractPlugin(),
+        require('@vitejs/plugin-vue-jsx')({
+          exclude: [/\.stories\.(t|j)sx?$/, /node_modules/],
+        }),
+      ],
     })
   },
 }
