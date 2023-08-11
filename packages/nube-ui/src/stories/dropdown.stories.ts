@@ -46,7 +46,9 @@ const meta = {
       return { args, items }
     },
     template: `
-          <NDropdown v-bind="args" :items="items"/>
+        <div class="m-40">
+          <NDropdown v-bind="args" :items="items"/>  
+        </div>
       `,
   }),
   tags: ['autodocs'],
@@ -100,19 +102,22 @@ CustomDropdownItemContent.decorators = [
         return { args }
       },
       template: `
-              <NDropdown> 
-                <NDropdown-item>
-                  <Icon icon="ic:baseline-account-circle"/>
-                  User
-                </NDropdown-item>
-                <NDropdown-item variant="danger">
-                  <Icon icon="ic:baseline-logout"/>
-                  Logout
-                </NDropdown-item>
-                <NDropdown-item disabled>
-                  Disabled
-                </NDropdown-item>
-              </NDropdown>
+              <div class="m-40">
+                <NDropdown> 
+                  <NDropdown-item>
+                    <Icon icon="ic:baseline-account-circle"/>
+                    User
+                  </NDropdown-item>
+                  <NDropdown-item variant="danger">
+                    <Icon icon="ic:baseline-logout"/>
+                    Logout
+                  </NDropdown-item>
+                  <NDropdown-item disabled>
+                    Disabled
+                  </NDropdown-item>
+                </NDropdown>
+              </div>
+              
               `,
     }
   },

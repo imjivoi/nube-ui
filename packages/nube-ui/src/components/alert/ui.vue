@@ -1,7 +1,7 @@
 <template>
-  <div :class="styles.base({ variant, flat, shadow, rounded })">
+  <div :class="classes.root()">
     <div>
-      <h3 :class="styles.title">
+      <h3 :class="classes.title()">
         <slot name="title" />
       </h3>
 
@@ -17,17 +17,22 @@ export default {
 }
 </script>
 <script setup lang="ts">
+import { computed } from 'vue'
 import { ColorVariantType } from '../../styles'
-import * as styles from './index.css'
+
+import { alert } from './styles'
 
 export interface AlertProps {
   variant?: ColorVariantType
   flat?: boolean
   shadow?: boolean
   rounded?: boolean
+  size?: 'sm' | 'md' | 'lg'
 }
 
-withDefaults(defineProps<AlertProps>(), {
+const props = withDefaults(defineProps<AlertProps>(), {
   variant: 'primary',
 })
+
+const classes = computed(() => alert(props))
 </script>

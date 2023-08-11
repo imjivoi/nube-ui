@@ -1,17 +1,24 @@
 <template>
-  <Menu as="div" :class="styles.base">
+  <Menu as="div" :class="classes.root()">
     <div>
       <MenuButton as="template" :disabled="disabled">
         <slot name="trigger">
           <NButton :variant="variant" :flat="flat" :plain="plain" :shadow="shadow">
             {{ label }}
-            <Icon :class="styles.chevron" icon="vaadin:chevron-down-small" />
+            <Icon :class="classes.chevron()" icon="vaadin:chevron-down-small" />
           </NButton>
         </slot>
       </MenuButton>
     </div>
-    <transition :name="styles.animationClass">
-      <MenuItems :class="[styles.menu()]">
+    <transition
+      :enter-active-class="classes['transition-enter-active']()"
+      :enter-from-class="classes['transition-enter-from']()"
+      :enter-to-class="classes['transition-enter-to']()"
+      :leave-active-class="classes['transition-leave-active']()"
+      :leave-from-class="classes['transition-leave-from']()"
+      :leave-to-class="classes['transition-leave-to']()"
+    >
+      <MenuItems :class="[classes.menu()]">
         <slot>
           <NDropdownItem
             :variant="variant"
@@ -20,6 +27,7 @@
             :shadow="shadow"
             v-for="(item, idx) in items"
             :key="item.key || idx"
+            @click="item.onClick"
           >
             {{ item.label }}
           </NDropdownItem>
@@ -34,6 +42,8 @@ export default {
 }
 </script>
 <script lang="ts" setup>
+import { computed } from 'vue'
+
 import { Menu, MenuButton, MenuItems } from '@headlessui/vue'
 import { Icon } from '@iconify/vue'
 
@@ -41,7 +51,8 @@ import { NButton } from '../button'
 import { NDropdownItem } from './'
 
 import { ColorVariantType } from '../../styles'
-import * as styles from './index.css'
+
+import { dropdown } from './styles'
 
 export interface DropdownProps {
   variant?: ColorVariantType
@@ -49,7 +60,7 @@ export interface DropdownProps {
   plain?: boolean
   shadow?: boolean
   label?: string
-  items?: Array<{ label: string; value: string; action: () => void; key?: string }>
+  items?: Array<{ label: string; value: string; onClick: () => void; key?: string }>
   disabled?: boolean
 }
 
@@ -59,4 +70,6 @@ const props = withDefaults(defineProps<DropdownProps>(), {
   plain: false,
   shadow: false,
 })
+
+const classes = computed(() => dropdown(props))
 </script>

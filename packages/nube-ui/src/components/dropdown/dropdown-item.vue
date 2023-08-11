@@ -1,5 +1,5 @@
 <template>
-  <MenuItem as="div" :class="styles.item({ variant, flat, plain, shadow, disabled })" :disabled="disabled">
+  <MenuItem as="div" :class="classes" :disabled="disabled">
     <slot></slot>
   </MenuItem>
 </template>
@@ -10,10 +10,11 @@ export default {
 </script>
 <script setup lang="ts">
 import { MenuItem } from '@headlessui/vue'
+import { computed } from 'vue'
 
 import { ColorVariantType } from '../../styles'
 
-import * as styles from './index.css'
+import { dropdownItem } from './styles'
 
 export interface DropdownItemProps {
   variant?: ColorVariantType
@@ -23,5 +24,7 @@ export interface DropdownItemProps {
   disabled?: boolean
 }
 
-withDefaults(defineProps<DropdownItemProps>(), {})
+const props = withDefaults(defineProps<DropdownItemProps>(), {})
+
+const classes = computed(() => dropdownItem(props))
 </script>

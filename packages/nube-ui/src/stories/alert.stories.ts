@@ -118,3 +118,27 @@ export const Rounded: Story = {}
 Rounded.args = {
   rounded: true,
 }
+
+export const Sizes: Story = {}
+Sizes.decorators = [
+  () => {
+    return {
+      components: { NAlert },
+      setup() {
+        return {
+          sizes: ['sm','md', 'lg'],
+        }
+      },
+      template: `
+        <div style="display: grid; gap: 1rem">
+          <NAlert v-for="size in sizes" :key="size" :size="size">
+            <template #title>
+              Alert {{ size}}
+            </template>
+            Random text inside the alert 
+          </NAlert>
+        </div>
+      `,
+    }
+  },
+]

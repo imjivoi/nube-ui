@@ -35,6 +35,7 @@ module.exports = withTV({
       },
       boxShadow: {
         checkbox: '0 0 0 2px rgb(0 0 0 / 0.05)',
+        dorpdownItem: '0 2px 10px -3px rgb(0 0 0 / 0.5'
       },
     },
   },
