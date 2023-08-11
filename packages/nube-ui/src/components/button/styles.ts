@@ -11,7 +11,7 @@ export const rippleBackgrounds = {
 export const button = tv({
   slots: {
     root: 'active:scale-95 outline-none focus-visible:outline-none disabled:cursor-not-allowed disabled:transform-none font-medium transition-all duration-250 ease user-select-none z-1 rounded-xl flex items-center justify-center p-0',
-    content: 'z-10',
+    content: 'z-10 flex items-center justify-center w-full',
   },
   variants: {
     variant: {
@@ -31,16 +31,20 @@ export const button = tv({
     },
     size: {
       sm: {
-        root: 'text-sm h-8 px-3',
+        root: 'text-sm h-8',
+        content: 'px-3'
       },
       md: {
-        root: 'h-10 px-4',
+        root: 'h-10',
+        content: 'px-4'
       },
       lg: {
-        root: 'h-12 px-6',
+        root: 'h-12',
+        content: 'px-6'
       },
       xl: {
-        root: 'h-14 px-8',
+        root: 'h-14',
+        content: 'px-8'
       },
     },
     pill: {
@@ -56,6 +60,7 @@ export const button = tv({
     circle: {
       true: {
         root: 'rounded-full',
+        content: 'px-0'
       },
     },
     flat: {

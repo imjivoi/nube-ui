@@ -11,11 +11,12 @@
         : false
     "
   >
-    <div v-if="loading" class="mr-2 flex">
+    <span :class="classes.content()">
       <svg
+        v-if="loading"
         aria-hidden="true"
         role="status"
-        class="inline w-4 h-4 text-white animate-spin"
+        class="inline w-4 h-4 mr-2 text-white animate-spin"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -29,11 +30,8 @@
           fill="currentColor"
         ></path>
       </svg>
-    </div>
-
-    <div :class="classes.content()">
       <slot />
-    </div>
+    </span>
   </component>
 </template>
 <script lang="ts">
