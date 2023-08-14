@@ -1,26 +1,26 @@
 <template>
-  <div :class="styles.base">
-    <div :class="styles.wrapper({ shadow })">
-      <div :class="styles.container({ border, variant })">
-        <span v-if="prefix || $slots.prefix" :class="styles.prefix">
+  <div :class="classes.root()">
+    <div :class="classes.wrapper()">
+      <div :class="classes.container()">
+        <span v-if="prefix || $slots.prefix" :class="[classes.prefix(), 'pl-2']">
           <slot name="suffix">
             {{ prefix }}
           </slot>
         </span>
         <input
           v-bind="$attrs"
-          :class="styles.content"
+          :class="classes.content()"
           :value="modelValue"
           @input="$emit('update:model-value', ($event.target as HTMLInputElement).value)"
           :type="currentType"
           :disabled="disabled"
         />
-        <label :class="styles.placeholder({ label: !!labelPlaceholder, hidden: !!modelValue })">
+        <label :class="placeholderStyle({ label: !!labelPlaceholder, hidden: !!modelValue })">
           {{ labelPlaceholder || placeholder }}
         </label>
-        <label :class="styles.label" v-if="!!label && !labelPlaceholder">{{ label }}</label>
-        <span v-if="suffix || $slots.suffix || type === 'password'" :class="styles.prefix">
-          <button @click="toggleType" :class="styles.passwordButton" v-if="type === 'password'">
+        <label :class="labelStyle" v-if="!!label && !labelPlaceholder">{{ label }}</label>
+        <span v-if="suffix || $slots.suffix || type === 'password'" :class="[classes.prefix(), 'pr-2']">
+          <button @click="toggleType" :class="classes.passwordButton()" v-if="type === 'password'">
             <Icon icon="mdi:eye-outline" v-if="currentType === 'password'" />
             <Icon icon="mdi:eye-off-outline" v-else />
           </button>
@@ -30,7 +30,7 @@
         </span>
       </div>
     </div>
-    <div :class="styles.message({ variant })" v-if="message || $slots.message">
+    <div :class="classes.message()" v-if="message || $slots.message">
       <slot name="message">
         {{ message }}
       </slot>
@@ -45,11 +45,12 @@ export default {
 </script>
 <script lang="ts" setup>
 import { Icon } from '@iconify/vue'
+import { computed, ref } from 'vue'
 
 import type { ColorVariantType } from '@/styles'
 
 import * as styles from './index.css'
-import { ref } from 'vue'
+import {input, label as labelStyle, placeholder as placeholderStyle} from './styles'
 
 export interface InputProps {
   placeholder?: string
@@ -77,4 +78,6 @@ const currentType = ref(props.type)
 const toggleType = () => {
   currentType.value = currentType.value === 'password' ? 'text' : 'password'
 }
+
+const classes = computed(()=>input(props))
 </script>
